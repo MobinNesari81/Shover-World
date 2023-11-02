@@ -171,10 +171,11 @@ class ShoverWorldEnv(gym.Env):
             if k == self.number_of_barriers:
                 break
             
-            pos_x = random.randint(1, self.n_rows-1)
-            pos_y = random.randint(1, self.n_cols-1)
+            pos_x = random.randint(0, self.n_rows-1)
+            pos_y = random.randint(0, self.n_cols-1)
+            pos = (pos_x, pos_y)
 
-            if self.map[pos_x][pos_y] == 0:
+            if not ((0,0) == pos or (0,self.n_cols-1) == pos or (self.n_rows-1, 0) == pos or (self.n_rows-1, self.n_cols-1) == pos):
                 self.map[pos_x][pos_y] = 2
                 k += 1
             
