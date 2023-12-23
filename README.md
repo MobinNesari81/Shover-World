@@ -9,8 +9,9 @@ We use an n * n array to represent the deck, where each element of the array has
 - **0** means empty slots in the deck. The empty slots are colored **white** in the graphical interface.
 - **1** means boxes that the player can push. The boxes are colored **yellow** in the graphical interface.
 - **2** means obstacles that block the movement of the player and the boxes. The obstacles are fixed and cannot be moved. They can be placed next to the edge of the deck. The obstacles are colored **black** in the graphical interface.
-
-![An example of a generated map](images/map.png)
+<div align="center">
+  ![An example of a generated map](images/map.png)
+</div>
 
 An action in this environment is defined as a pair of values, consisting of the coordinates of the **box** that the agent wants to **push** and the **direction** of its movement. The direction is encoded as an integer, where 0 and 2 mean up and down, and 1 and 3 mean right and left. 
 
@@ -49,7 +50,9 @@ env = Shover(n_rows=10, n_cols=10, number_of_boxes=5, number_of_barriers=10, ren
 
 Then, you can call the render method on the environment instance, either inside a loop or after taking an action:
 
-![An environment rendering in Pygame](images/game.png))
+<div align="center">
+  ![An environment rendering in Pygame](images/game.png)
+</div>
 
 ## Usage Example 
 ```python
