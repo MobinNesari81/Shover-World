@@ -35,8 +35,8 @@ class AdversarialShoverWorldEnv(gym.Env):
 
     def reset(self):
         self.map = [[0 for _ in range(self.n_cols)] for _ in range(self.n_rows)]
-        self.p1_args = {'id' : 1, 'last_dir': None}
-        self.p2_args = {'id' : 2, 'last_dir': None}
+        self.p1_args = {'id' : 1, 'last_pos': None, 'last_dir': None}
+        self.p2_args = {'id' : 2, 'last_pos': None, 'last_dir': None}
         self.turn = random.randint(1,2)
         self._generate_map()
         return self._get_obs()
@@ -60,7 +60,8 @@ class AdversarialShoverWorldEnv(gym.Env):
         if args['last_dir'] == action[2]:
             reward += 1 
         
-        # update the last dir 
+        # update the last dir and pos 
+        args['last_pos'] = (action[0], action[1])
         args['last_dir'] = action[2]
         # update turn 
         self.turn = 1 if self.turn == 2 else 2 
@@ -217,7 +218,7 @@ class AdversarialShoverWorldEnv(gym.Env):
         return self.turn, self.map
 
     def _get_info(self):
-        return {"previous_direction": self.last_dir, 'previous_position': self.last_pos}
+        return {"player1_previous_direction": self.p1_args['last_dir'], 'player1_previous_position': self.p1_args['last_pos'], "player2_previous_direction": self.p2_args['last_dir'], 'player2_previous_position': self.p2_args['last_pos']}
 
     def _draw_grid(self):
         for x in range(0, self.n_rows * self.cell_size, self.cell_size):
