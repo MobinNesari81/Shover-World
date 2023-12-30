@@ -110,7 +110,6 @@ class AdversarialShoverWorldEnv(gym.Env):
                 # If next point is empty, move the box
                 elif self.map[row+dr][col+dc] == 0:
                     self.map[row][col], self.map[row+dr][col+dc] = self.map[row+dr][col+dc], self.map[row][col]
-                    print(self.map[row][col], self.map[row+dr][col+dc])
                     row -= dr 
                     col -= dc 
                 else:
