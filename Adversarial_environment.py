@@ -148,13 +148,19 @@ class AdversarialShoverWorldEnv(gym.Env):
                     value = self.map[row][col]
                     color = None
                     if value == -1:
-                        color = (255, 0, 0)  # Red for lava
+                        color = (255, 0, 0)
+                    if value == -2:
+                        color = (0, 0, 255)
+                    if value == -3:
+                        color = (102, 102, 102)
                     elif value == 0:
-                        color = (255, 255, 255)  # White for empty slot
+                        color = (255, 255, 255) 
                     elif value == 1:
-                        color = (255, 255, 0)  # Yellow for boxes
+                        color = (255, 77, 77)  
                     elif value == 2:
-                        color = (0, 0, 0)  # Black for barriers
+                        color = (77, 77, 255)  
+                    elif value == 3:
+                        color = (0, 0, 0)
 
                     if color:
                         pygame.draw.rect(self.window, color, (col * self.cell_size, row * self.cell_size, self.cell_size, self.cell_size))

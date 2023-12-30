@@ -258,6 +258,7 @@ $RECYCLE.BIN/
 *.msix
 *.msm
 *.msp
+test.py
 
 # Windows shortcuts
 *.lnk
